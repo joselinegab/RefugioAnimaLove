@@ -1,0 +1,856 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="REFUGIOANIMAL" Class="BDAnimaloveDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=JOSELYN;Initial Catalog=REFUGIOANIMAL;Integrated Security=True" SettingsObjectName="CapaDatos.Properties.Settings" SettingsPropertyName="REFUGIOANIMALConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.ADOPTANTE" Member="ADOPTANTE">
+    <Type Name="ADOPTANTE">
+      <Column Name="IdAdoptante" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="Nombres" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Apellidos" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Edad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ciudad" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Celular" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ADOPTANTE_SOLICITUD" Member="SOLICITUD" ThisKey="IdAdoptante" OtherKey="IdAdoptante" Type="SOLICITUD" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USUARIO" Member="USUARIO">
+    <Type Name="USUARIO">
+      <Column Name="IdUsuario" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Usuario" Member="Usuario1" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Contrasenia" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ANIMAL" Member="ANIMAL">
+    <Type Name="ANIMAL">
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Edad" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Tamanio" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Peso" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Enfermo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Esterilizado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Enfermedad" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Vacunas" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="FechaLlegada" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Foto" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Especie" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EstadoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="ANIMAL_SOLICITUD" Member="SOLICITUD" ThisKey="IdAnimal" OtherKey="IdAnimal" Type="SOLICITUD" />
+      <Association Name="ANIMAL_TRATAMIENTO_ANIMAL" Member="TRATAMIENTO_ANIMAL" ThisKey="IdAnimal" OtherKey="IdAnimal" Type="TRATAMIENTO_ANIMAL" />
+      <Association Name="ESPECIE_ANIMAL" Member="ESPECIE1" ThisKey="Especie" OtherKey="Especie1" Type="ESPECIE" IsForeignKey="true" />
+      <Association Name="ESTADO_ANIMAL_ANIMAL" Member="ESTADO_ANIMAL" ThisKey="EstadoAnimal" OtherKey="EstadoAnimal" Type="ESTADO_ANIMAL" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ESPECIE" Member="ESPECIE">
+    <Type Name="ESPECIE">
+      <Column Name="Especie" Member="Especie1" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ESPECIE_ANIMAL" Member="ANIMAL" ThisKey="Especie1" OtherKey="Especie" Type="ANIMAL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ESTADO_ANIMAL" Member="ESTADO_ANIMAL">
+    <Type Name="ESTADO_ANIMAL">
+      <Column Name="EstadoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ESTADO_ANIMAL_ANIMAL" Member="ANIMAL" ThisKey="EstadoAnimal" OtherKey="EstadoAnimal" Type="ANIMAL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ESTADO_SOLICITUD" Member="ESTADO_SOLICITUD">
+    <Type Name="ESTADO_SOLICITUD">
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ESTADO_SOLICITUD_SOLICITUD" Member="SOLICITUD" ThisKey="Estado" OtherKey="Estado" Type="SOLICITUD" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PERSONAL" Member="PERSONAL">
+    <Type Name="PERSONAL">
+      <Column Name="IdPersonal" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="Nombres" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Apellidos" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Edad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Ciudad" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tipo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Association Name="TIPO_PERSONAL_PERSONAL" Member="TIPO_PERSONAL" ThisKey="Tipo" OtherKey="Tipo" Type="TIPO_PERSONAL" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SOLICITUD" Member="SOLICITUD">
+    <Type Name="SOLICITUD">
+      <Column Name="IdSolicitud" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdAdoptante" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="ADOPTANTE_SOLICITUD" Member="ADOPTANTE" ThisKey="IdAdoptante" OtherKey="IdAdoptante" Type="ADOPTANTE" IsForeignKey="true" />
+      <Association Name="ANIMAL_SOLICITUD" Member="ANIMAL" ThisKey="IdAnimal" OtherKey="IdAnimal" Type="ANIMAL" IsForeignKey="true" />
+      <Association Name="ESTADO_SOLICITUD_SOLICITUD" Member="ESTADO_SOLICITUD" ThisKey="Estado" OtherKey="Estado" Type="ESTADO_SOLICITUD" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TIPO_PERSONAL" Member="TIPO_PERSONAL">
+    <Type Name="TIPO_PERSONAL">
+      <Column Name="Tipo" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="TIPO_PERSONAL_PERSONAL" Member="PERSONAL" ThisKey="Tipo" OtherKey="Tipo" Type="PERSONAL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TRATAMIENTO" Member="TRATAMIENTO">
+    <Type Name="TRATAMIENTO">
+      <Column Name="Tratamiento" Member="Tratamiento1" Type="System.String" DbType="VarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="TRATAMIENTO_TRATAMIENTO_ANIMAL" Member="TRATAMIENTO_ANIMAL" ThisKey="Tratamiento1" OtherKey="Tratamiento" Type="TRATAMIENTO_ANIMAL" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TRATAMIENTO_ANIMAL" Member="TRATAMIENTO_ANIMAL">
+    <Type Name="TRATAMIENTO_ANIMAL">
+      <Column Name="IdTratamientoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Causa" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Comentario" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Tratamiento" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="ANIMAL_TRATAMIENTO_ANIMAL" Member="ANIMAL" ThisKey="IdAnimal" OtherKey="IdAnimal" Type="ANIMAL" IsForeignKey="true" />
+      <Association Name="TRATAMIENTO_TRATAMIENTO_ANIMAL" Member="TRATAMIENTO1" ThisKey="Tratamiento" OtherKey="Tratamiento1" Type="TRATAMIENTO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.cp_ActualizarAdoptante" Method="cp_ActualizarAdoptante">
+    <Parameter Name="IdAdoptante" Parameter="idAdoptante" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Identificacion" Parameter="identificacion" Type="System.String" DbType="VarChar(13)" />
+    <Parameter Name="Nombres" Parameter="nombres" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Apellidos" Parameter="apellidos" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Sexo" Parameter="sexo" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="FechaNacimiento" Parameter="fechaNacimiento" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Edad" Parameter="edad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Ciudad" Parameter="ciudad" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Celular" Parameter="celular" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_ListarUsuario_Filtro" Method="cp_ListarUsuario_Filtro">
+    <Parameter Name="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_ListarUsuario_FiltroResult">
+      <Column Name="IdUsuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Usuario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Contrasenia" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ActualizarAnimal" Method="cp_ActualizarAnimal">
+    <Parameter Name="IdAnimal" Parameter="idAnimal" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Sexo" Parameter="sexo" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="FechaNacimiento" Parameter="fechaNacimiento" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Edad" Parameter="edad" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Tamanio" Parameter="tamanio" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Peso" Parameter="peso" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Enfermo" Parameter="enfermo" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="Esterilizado" Parameter="esterilizado" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="Enfermedad" Parameter="enfermedad" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Vacunas" Parameter="vacunas" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="FechaLlegada" Parameter="fechaLlegada" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Foto" Parameter="foto" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Parameter Name="Especie" Parameter="especie" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="EstadoAnimal" Parameter="estadoAnimal" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_ActualizarEspecie" Method="cp_ActualizarEspecie">
+    <Parameter Name="Especie" Parameter="especie" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_ActualizarEstadoAnimal" Method="cp_ActualizarEstadoAnimal">
+    <Parameter Name="EstadoAnimal" Parameter="estadoAnimal" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_ActualizarEstadoSolicitud" Method="cp_ActualizarEstadoSolicitud">
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_ActualizarPersonal" Method="cp_ActualizarPersonal">
+    <Parameter Name="IdPersonal" Parameter="idPersonal" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Identificacion" Parameter="identificacion" Type="System.String" DbType="VarChar(13)" />
+    <Parameter Name="Nombres" Parameter="nombres" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Apellidos" Parameter="apellidos" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Sexo" Parameter="sexo" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="FechaNacimiento" Parameter="fechaNacimiento" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Edad" Parameter="edad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Ciudad" Parameter="ciudad" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Tipo" Parameter="tipo" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_ActualizarSolicitud" Method="cp_ActualizarSolicitud">
+    <Parameter Name="IdSolicitud" Parameter="idSolicitud" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Fecha" Parameter="fecha" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="IdAnimal" Parameter="idAnimal" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdAdoptante" Parameter="idAdoptante" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_ActualizarTipoPersonal" Method="cp_ActualizarTipoPersonal">
+    <Parameter Name="Tipo" Parameter="tipo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_ActualizarTratamiento" Method="cp_ActualizarTratamiento">
+    <Parameter Name="Tratamiento" Parameter="tratamiento" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_ActualizarTratamientoAnimal" Method="cp_ActualizarTratamientoAnimal">
+    <Parameter Name="IdTratamientoAnimal" Parameter="idTratamientoAnimal" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Causa" Parameter="causa" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Fecha" Parameter="fecha" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Comentario" Parameter="comentario" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Tratamiento" Parameter="tratamiento" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="IdAnimal" Parameter="idAnimal" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_ActualizarUsuario" Method="cp_ActualizarUsuario">
+    <Parameter Name="IdUsuario" Parameter="idUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Contrasenia" Parameter="contrasenia" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_BuscarAdoptante" Method="cp_BuscarAdoptante">
+    <Parameter Name="IdAdoptante" Parameter="idAdoptante" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_BuscarAdoptanteResult">
+      <Column Name="IdAdoptante" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="Nombres" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Apellidos" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Edad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ciudad" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Celular" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_BuscarAnimal" Method="cp_BuscarAnimal">
+    <Parameter Name="IdAnimal" Parameter="idAnimal" Type="System.Int32" DbType="Int" />
+    <ElementType Name="cp_BuscarAnimalResult">
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Edad" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Tamanio" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Peso" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Enfermo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Esterilizado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Enfermedad" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Vacunas" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="FechaLlegada" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Foto" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="Especie" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EstadoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_BuscarEspecie" Method="cp_BuscarEspecie">
+    <Parameter Name="Especie" Parameter="especie" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_BuscarEspecieResult">
+      <Column Name="Especie" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_BuscarEstadoAnimal" Method="cp_BuscarEstadoAnimal">
+    <Parameter Name="EstadoAnimal" Parameter="estadoAnimal" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_BuscarEstadoAnimalResult">
+      <Column Name="EstadoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_BuscarEstadoSolicitud" Method="cp_BuscarEstadoSolicitud">
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_BuscarEstadoSolicitudResult">
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_BuscarPersonal" Method="cp_BuscarPersonal">
+    <Parameter Name="IdPersonal" Parameter="idPersonal" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_BuscarPersonalResult">
+      <Column Name="IdPersonal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="Nombres" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Apellidos" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Edad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Ciudad" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tipo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_BuscarSolicitud" Method="cp_BuscarSolicitud">
+    <Parameter Name="IdSolicitud" Parameter="idSolicitud" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_BuscarSolicitudResult">
+      <Column Name="IdSolicitud" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdAdoptante" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_BuscarTipoPersonal" Method="cp_BuscarTipoPersonal">
+    <Parameter Name="Tipo" Parameter="tipo" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_BuscarTipoPersonalResult">
+      <Column Name="Tipo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_BuscarTratamiento" Method="cp_BuscarTratamiento">
+    <Parameter Name="Tratamiento" Parameter="tratamiento" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_BuscarTratamientoResult">
+      <Column Name="Tratamiento" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_BuscarTratamientoAnimal" Method="cp_BuscarTratamientoAnimal">
+    <Parameter Name="IdTratamientoAnimal" Parameter="idTratamientoAnimal" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_BuscarTratamientoAnimalResult">
+      <Column Name="IdTratamientoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Causa" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Comentario" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Tratamiento" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_BuscarUsuario" Method="cp_BuscarUsuario">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_BuscarUsuarioResult">
+      <Column Name="IdUsuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Usuario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Contrasenia" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_EliminarAdoptante" Method="cp_EliminarAdoptante">
+    <Parameter Name="IdAdoptante" Parameter="idAdoptante" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_EliminarAnimal" Method="cp_EliminarAnimal">
+    <Parameter Name="IdAnimal" Parameter="idAnimal" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_EliminarEspecie" Method="cp_EliminarEspecie">
+    <Parameter Name="Especie" Parameter="especie" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_EliminarEstadoAnimal" Method="cp_EliminarEstadoAnimal">
+    <Parameter Name="EstadoAnimal" Parameter="estadoAnimal" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_EliminarEstadoSolicitud" Method="cp_EliminarEstadoSolicitud">
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_EliminarPersonal" Method="cp_EliminarPersonal">
+    <Parameter Name="IdPersonal" Parameter="idPersonal" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_EliminarSolicitud" Method="cp_EliminarSolicitud">
+    <Parameter Name="IdSolicitud" Parameter="idSolicitud" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_EliminarTipoPersonal" Method="cp_EliminarTipoPersonal">
+    <Parameter Name="Tipo" Parameter="tipo" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_EliminarTratamiento" Method="cp_EliminarTratamiento">
+    <Parameter Name="Tratamiento" Parameter="tratamiento" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_EliminarTratamientoAnimal" Method="cp_EliminarTratamientoAnimal">
+    <Parameter Name="IdTratamientoAnimal" Parameter="idTratamientoAnimal" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_EliminarUsuario" Method="cp_EliminarUsuario">
+    <Parameter Name="IdUsuario" Parameter="idUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_InsertarAdoptante" Method="cp_InsertarAdoptante">
+    <Parameter Name="IdAdoptante" Parameter="idAdoptante" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Identificacion" Parameter="identificacion" Type="System.String" DbType="VarChar(13)" />
+    <Parameter Name="Nombres" Parameter="nombres" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Apellidos" Parameter="apellidos" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Sexo" Parameter="sexo" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="FechaNacimiento" Parameter="fechaNacimiento" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Edad" Parameter="edad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Ciudad" Parameter="ciudad" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Celular" Parameter="celular" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_InsertarAnimal" Method="cp_InsertarAnimal">
+    <Parameter Name="IdAnimal" Parameter="idAnimal" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Nombre" Parameter="nombre" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Sexo" Parameter="sexo" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="FechaNacimiento" Parameter="fechaNacimiento" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Edad" Parameter="edad" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Tamanio" Parameter="tamanio" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Peso" Parameter="peso" Type="System.String" DbType="VarChar(25)" />
+    <Parameter Name="Enfermo" Parameter="enfermo" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="Esterilizado" Parameter="esterilizado" Type="System.String" DbType="VarChar(2)" />
+    <Parameter Name="Enfermedad" Parameter="enfermedad" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Vacunas" Parameter="vacunas" Type="System.String" DbType="VarChar(500)" />
+    <Parameter Name="FechaLlegada" Parameter="fechaLlegada" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Foto" Parameter="foto" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Parameter Name="Especie" Parameter="especie" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="EstadoAnimal" Parameter="estadoAnimal" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_InsertarEspecie" Method="cp_InsertarEspecie">
+    <Parameter Name="Especie" Parameter="especie" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_InsertarEstadoAnimal" Method="cp_InsertarEstadoAnimal">
+    <Parameter Name="EstadoAnimal" Parameter="estadoAnimal" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_InsertarEstadoSolicitud" Method="cp_InsertarEstadoSolicitud">
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_InsertarPersonal" Method="cp_InsertarPersonal">
+    <Parameter Name="IdPersonal" Parameter="idPersonal" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Identificacion" Parameter="identificacion" Type="System.String" DbType="VarChar(13)" />
+    <Parameter Name="Nombres" Parameter="nombres" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Apellidos" Parameter="apellidos" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Sexo" Parameter="sexo" Type="System.Char" DbType="Char(1)" />
+    <Parameter Name="FechaNacimiento" Parameter="fechaNacimiento" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Edad" Parameter="edad" Type="System.Int32" DbType="Int" />
+    <Parameter Name="Ciudad" Parameter="ciudad" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Direccion" Parameter="direccion" Type="System.String" DbType="VarChar(150)" />
+    <Parameter Name="Telefono" Parameter="telefono" Type="System.String" DbType="VarChar(20)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Tipo" Parameter="tipo" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_InsertarSolicitud" Method="cp_InsertarSolicitud">
+    <Parameter Name="IdSolicitud" Parameter="idSolicitud" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Fecha" Parameter="fecha" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Estado" Parameter="estado" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="IdAnimal" Parameter="idAnimal" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IdAdoptante" Parameter="idAdoptante" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_InsertarTipoPersonal" Method="cp_InsertarTipoPersonal">
+    <Parameter Name="Tipo" Parameter="tipo" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_InsertarTratamiento" Method="cp_InsertarTratamiento">
+    <Parameter Name="Tratamiento" Parameter="tratamiento" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Descripcion" Parameter="descripcion" Type="System.String" DbType="VarChar(100)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_InsertarTratamientoAnimal" Method="cp_InsertarTratamientoAnimal">
+    <Parameter Name="IdTratamientoAnimal" Parameter="idTratamientoAnimal" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Causa" Parameter="causa" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Fecha" Parameter="fecha" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="Comentario" Parameter="comentario" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="Tratamiento" Parameter="tratamiento" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="IdAnimal" Parameter="idAnimal" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_InsertarUsuario" Method="cp_InsertarUsuario">
+    <Parameter Name="IdUsuario" Parameter="idUsuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Usuario" Parameter="usuario" Type="System.String" DbType="VarChar(50)" />
+    <Parameter Name="Contrasenia" Parameter="contrasenia" Type="System.String" DbType="VarChar(50)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.cp_ListarAdoptante" Method="cp_ListarAdoptante">
+    <ElementType Name="cp_ListarAdoptanteResult">
+      <Column Name="IdAdoptante" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="Nombres" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Apellidos" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Edad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ciudad" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Celular" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarAdoptante_Filtro" Method="cp_ListarAdoptante_Filtro">
+    <Parameter Name="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_ListarAdoptante_FiltroResult">
+      <Column Name="IdAdoptante" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="Nombres" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Apellidos" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Edad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ciudad" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Celular" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarAnimal" Method="cp_ListarAnimal">
+    <ElementType Name="cp_ListarAnimalResult">
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Edad" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Tamanio" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Peso" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Enfermo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Esterilizado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Enfermedad" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Vacunas" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="FechaLlegada" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Foto" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="Especie" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EstadoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarAnimal_Filtro" Method="cp_ListarAnimal_Filtro">
+    <Parameter Name="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_ListarAnimal_FiltroResult">
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Edad" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Tamanio" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Peso" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Enfermo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Esterilizado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Enfermedad" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Vacunas" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="FechaLlegada" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Foto" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="Especie" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EstadoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarAnimalesXEstado" Method="cp_ListarAnimalesXEstado">
+    <Parameter Name="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_ListarAnimalesXEstadoResult">
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Edad" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Tamanio" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Peso" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Enfermo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Esterilizado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Enfermedad" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Vacunas" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="FechaLlegada" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Foto" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="Especie" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="EstadoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarAnimalTratamiento" Method="cp_ListarAnimalTratamiento">
+    <ElementType Name="cp_ListarAnimalTratamientoResult">
+      <Column Name="IdTratamientoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Causa" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Comentario" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Tratamiento" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Edad" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Peso" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Esterilizado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarAnimalTratamiento_Filtro" Method="cp_ListarAnimalTratamiento_Filtro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_ListarAnimalTratamiento_FiltroResult">
+      <Column Name="IdTratamientoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Causa" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Comentario" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Tratamiento" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Edad" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Peso" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Esterilizado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarAnimalTratamiento_FiltroXIdAnimal" Method="cp_ListarAnimalTratamiento_FiltroXIdAnimal">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_ListarAnimalTratamiento_FiltroXIdAnimalResult">
+      <Column Name="IdTratamientoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Causa" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Comentario" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Tratamiento" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Edad" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Peso" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Esterilizado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarEspecie" Method="cp_ListarEspecie">
+    <ElementType Name="cp_ListarEspecieResult">
+      <Column Name="Especie" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarEspecie_Filtro" Method="cp_ListarEspecie_Filtro">
+    <Parameter Name="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_ListarEspecie_FiltroResult">
+      <Column Name="Especie" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarEstadoAnimal" Method="cp_ListarEstadoAnimal">
+    <ElementType Name="cp_ListarEstadoAnimalResult">
+      <Column Name="EstadoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarEstadoAnimal_Filtro" Method="cp_ListarEstadoAnimal_Filtro">
+    <Parameter Name="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_ListarEstadoAnimal_FiltroResult">
+      <Column Name="EstadoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarEstadoSolicitud" Method="cp_ListarEstadoSolicitud">
+    <ElementType Name="cp_ListarEstadoSolicitudResult">
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarEstadoSolicitud_Filtro" Method="cp_ListarEstadoSolicitud_Filtro">
+    <Parameter Name="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_ListarEstadoSolicitud_FiltroResult">
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarPersonal" Method="cp_ListarPersonal">
+    <ElementType Name="cp_ListarPersonalResult">
+      <Column Name="IdPersonal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="Nombres" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Apellidos" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Edad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Ciudad" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tipo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarPersonal_Filtro" Method="cp_ListarPersonal_Filtro">
+    <Parameter Name="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_ListarPersonal_FiltroResult">
+      <Column Name="IdPersonal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="Nombres" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Apellidos" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FechaNacimiento" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Edad" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Ciudad" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(150)" CanBeNull="true" />
+      <Column Name="Telefono" Type="System.String" DbType="Char(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Tipo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarSolicitud" Method="cp_ListarSolicitud">
+    <ElementType Name="cp_ListarSolicitudResult">
+      <Column Name="IdSolicitud" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdAdoptante" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarSolicitud_Filtro" Method="cp_ListarSolicitud_Filtro">
+    <Parameter Name="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_ListarSolicitud_FiltroResult">
+      <Column Name="IdSolicitud" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdAdoptante" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarSolicitud_FiltroFecha" Method="cp_ListarSolicitud_FiltroFecha">
+    <Parameter Name="valor" Type="System.DateTime" DbType="Date" />
+    <ElementType Name="cp_ListarSolicitud_FiltroFechaResult">
+      <Column Name="IdSolicitud" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IdAdoptante" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarSolicitudAdopcion" Method="cp_ListarSolicitudAdopcion">
+    <ElementType Name="cp_ListarSolicitudAdopcionResult">
+      <Column Name="IdSolicitud" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Edad" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Peso" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Enfermo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Esterilizado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Enfermedad" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Vacunas" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Foto" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="Nombres" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Apellidos" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EdadA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ciudad" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Celular" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IdAdoptante" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarSolicitudAdopcion_Filtro" Method="cp_ListarSolicitudAdopcion_Filtro">
+    <Parameter Name="Valor" Parameter="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_ListarSolicitudAdopcion_FiltroResult">
+      <Column Name="IdSolicitud" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Edad" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Peso" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Enfermo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Esterilizado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Enfermedad" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Vacunas" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Foto" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="Nombres" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Apellidos" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EdadA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ciudad" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Celular" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IdAdoptante" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarSolicitudAdopcion_FiltroXIdAdoptante" Method="cp_ListarSolicitudAdopcion_FiltroXIdAdoptante">
+    <Parameter Name="Ident" Parameter="ident" Type="System.String" DbType="VarChar(13)" />
+    <ElementType Name="cp_ListarSolicitudAdopcion_FiltroXIdAdoptanteResult">
+      <Column Name="IdSolicitud" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Estado" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Nombre" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Sexo" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="Edad" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Peso" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Enfermo" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Esterilizado" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Enfermedad" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Vacunas" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="Foto" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" />
+      <Column Name="Identificacion" Type="System.String" DbType="VarChar(13)" CanBeNull="true" />
+      <Column Name="Nombres" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Apellidos" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="EdadA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Ciudad" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Direccion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Celular" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IdAdoptante" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarTipoPersonal" Method="cp_ListarTipoPersonal">
+    <ElementType Name="cp_ListarTipoPersonalResult">
+      <Column Name="Tipo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarTipoPersonal_Filtro" Method="cp_ListarTipoPersonal_Filtro">
+    <Parameter Name="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_ListarTipoPersonal_FiltroResult">
+      <Column Name="Tipo" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarTratamiento" Method="cp_ListarTratamiento">
+    <ElementType Name="cp_ListarTratamientoResult">
+      <Column Name="Tratamiento" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarTratamiento_Filtro" Method="cp_ListarTratamiento_Filtro">
+    <Parameter Name="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_ListarTratamiento_FiltroResult">
+      <Column Name="Tratamiento" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="Descripcion" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarTratamientoAnimal" Method="cp_ListarTratamientoAnimal">
+    <ElementType Name="cp_ListarTratamientoAnimalResult">
+      <Column Name="IdTratamientoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Causa" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Comentario" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Tratamiento" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarTratamientoAnimal_Filtro" Method="cp_ListarTratamientoAnimal_Filtro">
+    <Parameter Name="valor" Type="System.String" DbType="VarChar(50)" />
+    <ElementType Name="cp_ListarTratamientoAnimal_FiltroResult">
+      <Column Name="IdTratamientoAnimal" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Causa" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Fecha" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Comentario" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="Tratamiento" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="IdAnimal" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.cp_ListarUsuario" Method="cp_ListarUsuario">
+    <ElementType Name="cp_ListarUsuarioResult">
+      <Column Name="IdUsuario" Type="System.String" DbType="VarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="Usuario" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Contrasenia" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+</Database>

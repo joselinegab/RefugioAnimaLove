@@ -1,0 +1,206 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DSSolicitud" targetNamespace="http://tempuri.org/DSSolicitud.xsd" xmlns:mstns="http://tempuri.org/DSSolicitud.xsd" xmlns="http://tempuri.org/DSSolicitud.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="REFUGIOANIMALConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="REFUGIOANIMALConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.RefugioAnimaLove.Properties.Settings.GlobalReference.Default.REFUGIOANIMALConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="v_SolicitudAdopcionTableAdapter" GeneratorDataComponentClassName="v_SolicitudAdopcionTableAdapter" Name="v_SolicitudAdopcion" UserDataComponentName="v_SolicitudAdopcionTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="REFUGIOANIMALConnectionString (Settings)" DbObjectName="REFUGIOANIMAL.dbo.v_SolicitudAdopcion" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT IdSolicitud, Fecha, Estado, Nombre, Sexo, Edad, Peso, Enfermo, Esterilizado, Enfermedad, Vacunas, Foto, Identificacion, Nombres, Apellidos, EdadA, Ciudad, Direccion, Celular, Email, IdAdoptante, IdAnimal FROM dbo.v_SolicitudAdopcion</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IdSolicitud" DataSetColumn="IdSolicitud" />
+              <Mapping SourceColumn="Fecha" DataSetColumn="Fecha" />
+              <Mapping SourceColumn="Estado" DataSetColumn="Estado" />
+              <Mapping SourceColumn="Nombre" DataSetColumn="Nombre" />
+              <Mapping SourceColumn="Sexo" DataSetColumn="Sexo" />
+              <Mapping SourceColumn="Edad" DataSetColumn="Edad" />
+              <Mapping SourceColumn="Peso" DataSetColumn="Peso" />
+              <Mapping SourceColumn="Enfermo" DataSetColumn="Enfermo" />
+              <Mapping SourceColumn="Esterilizado" DataSetColumn="Esterilizado" />
+              <Mapping SourceColumn="Enfermedad" DataSetColumn="Enfermedad" />
+              <Mapping SourceColumn="Vacunas" DataSetColumn="Vacunas" />
+              <Mapping SourceColumn="Foto" DataSetColumn="Foto" />
+              <Mapping SourceColumn="Identificacion" DataSetColumn="Identificacion" />
+              <Mapping SourceColumn="Nombres" DataSetColumn="Nombres" />
+              <Mapping SourceColumn="Apellidos" DataSetColumn="Apellidos" />
+              <Mapping SourceColumn="EdadA" DataSetColumn="EdadA" />
+              <Mapping SourceColumn="Ciudad" DataSetColumn="Ciudad" />
+              <Mapping SourceColumn="Direccion" DataSetColumn="Direccion" />
+              <Mapping SourceColumn="Celular" DataSetColumn="Celular" />
+              <Mapping SourceColumn="Email" DataSetColumn="Email" />
+              <Mapping SourceColumn="IdAdoptante" DataSetColumn="IdAdoptante" />
+              <Mapping SourceColumn="IdAnimal" DataSetColumn="IdAnimal" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DSSolicitud" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DSSolicitud" msprop:Generator_UserDSName="DSSolicitud">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="v_SolicitudAdopcion" msprop:Generator_TableClassName="v_SolicitudAdopcionDataTable" msprop:Generator_TableVarName="tablev_SolicitudAdopcion" msprop:Generator_TablePropName="v_SolicitudAdopcion" msprop:Generator_RowDeletingName="v_SolicitudAdopcionRowDeleting" msprop:Generator_RowChangingName="v_SolicitudAdopcionRowChanging" msprop:Generator_RowEvHandlerName="v_SolicitudAdopcionRowChangeEventHandler" msprop:Generator_RowDeletedName="v_SolicitudAdopcionRowDeleted" msprop:Generator_UserTableName="v_SolicitudAdopcion" msprop:Generator_RowChangedName="v_SolicitudAdopcionRowChanged" msprop:Generator_RowEvArgName="v_SolicitudAdopcionRowChangeEvent" msprop:Generator_RowClassName="v_SolicitudAdopcionRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdSolicitud" msprop:Generator_ColumnVarNameInTable="columnIdSolicitud" msprop:Generator_ColumnPropNameInRow="IdSolicitud" msprop:Generator_ColumnPropNameInTable="IdSolicitudColumn" msprop:Generator_UserColumnName="IdSolicitud">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Fecha" msprop:Generator_ColumnVarNameInTable="columnFecha" msprop:Generator_ColumnPropNameInRow="Fecha" msprop:Generator_ColumnPropNameInTable="FechaColumn" msprop:Generator_UserColumnName="Fecha" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Estado" msprop:Generator_ColumnVarNameInTable="columnEstado" msprop:Generator_ColumnPropNameInRow="Estado" msprop:Generator_ColumnPropNameInTable="EstadoColumn" msprop:Generator_UserColumnName="Estado">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombre" msprop:Generator_ColumnVarNameInTable="columnNombre" msprop:Generator_ColumnPropNameInRow="Nombre" msprop:Generator_ColumnPropNameInTable="NombreColumn" msprop:Generator_UserColumnName="Nombre" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Sexo" msprop:Generator_ColumnVarNameInTable="columnSexo" msprop:Generator_ColumnPropNameInRow="Sexo" msprop:Generator_ColumnPropNameInTable="SexoColumn" msprop:Generator_UserColumnName="Sexo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Edad" msprop:Generator_ColumnVarNameInTable="columnEdad" msprop:Generator_ColumnPropNameInRow="Edad" msprop:Generator_ColumnPropNameInTable="EdadColumn" msprop:Generator_UserColumnName="Edad" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Peso" msprop:Generator_ColumnVarNameInTable="columnPeso" msprop:Generator_ColumnPropNameInRow="Peso" msprop:Generator_ColumnPropNameInTable="PesoColumn" msprop:Generator_UserColumnName="Peso" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Enfermo" msprop:Generator_ColumnVarNameInTable="columnEnfermo" msprop:Generator_ColumnPropNameInRow="Enfermo" msprop:Generator_ColumnPropNameInTable="EnfermoColumn" msprop:Generator_UserColumnName="Enfermo" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Esterilizado" msprop:Generator_ColumnVarNameInTable="columnEsterilizado" msprop:Generator_ColumnPropNameInRow="Esterilizado" msprop:Generator_ColumnPropNameInTable="EsterilizadoColumn" msprop:Generator_UserColumnName="Esterilizado" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Enfermedad" msprop:Generator_ColumnVarNameInTable="columnEnfermedad" msprop:Generator_ColumnPropNameInRow="Enfermedad" msprop:Generator_ColumnPropNameInTable="EnfermedadColumn" msprop:Generator_UserColumnName="Enfermedad" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Vacunas" msprop:Generator_ColumnVarNameInTable="columnVacunas" msprop:Generator_ColumnPropNameInRow="Vacunas" msprop:Generator_ColumnPropNameInTable="VacunasColumn" msprop:Generator_UserColumnName="Vacunas" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="500" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Foto" msprop:Generator_ColumnVarNameInTable="columnFoto" msprop:Generator_ColumnPropNameInRow="Foto" msprop:Generator_ColumnPropNameInTable="FotoColumn" msprop:Generator_UserColumnName="Foto" type="xs:base64Binary" minOccurs="0" />
+              <xs:element name="Identificacion" msprop:Generator_ColumnVarNameInTable="columnIdentificacion" msprop:Generator_ColumnPropNameInRow="Identificacion" msprop:Generator_ColumnPropNameInTable="IdentificacionColumn" msprop:Generator_UserColumnName="Identificacion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="13" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Nombres" msprop:Generator_ColumnVarNameInTable="columnNombres" msprop:Generator_ColumnPropNameInRow="Nombres" msprop:Generator_ColumnPropNameInTable="NombresColumn" msprop:Generator_UserColumnName="Nombres" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Apellidos" msprop:Generator_ColumnVarNameInTable="columnApellidos" msprop:Generator_ColumnPropNameInRow="Apellidos" msprop:Generator_ColumnPropNameInTable="ApellidosColumn" msprop:Generator_UserColumnName="Apellidos" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="EdadA" msprop:Generator_ColumnVarNameInTable="columnEdadA" msprop:Generator_ColumnPropNameInRow="EdadA" msprop:Generator_ColumnPropNameInTable="EdadAColumn" msprop:Generator_UserColumnName="EdadA" type="xs:int" minOccurs="0" />
+              <xs:element name="Ciudad" msprop:Generator_ColumnVarNameInTable="columnCiudad" msprop:Generator_ColumnPropNameInRow="Ciudad" msprop:Generator_ColumnPropNameInTable="CiudadColumn" msprop:Generator_UserColumnName="Ciudad" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Direccion" msprop:Generator_ColumnVarNameInTable="columnDireccion" msprop:Generator_ColumnPropNameInRow="Direccion" msprop:Generator_ColumnPropNameInTable="DireccionColumn" msprop:Generator_UserColumnName="Direccion" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Celular" msprop:Generator_ColumnVarNameInTable="columnCelular" msprop:Generator_ColumnPropNameInRow="Celular" msprop:Generator_ColumnPropNameInTable="CelularColumn" msprop:Generator_UserColumnName="Celular" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="Email" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_UserColumnName="Email" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdAdoptante" msprop:Generator_ColumnVarNameInTable="columnIdAdoptante" msprop:Generator_ColumnPropNameInRow="IdAdoptante" msprop:Generator_ColumnPropNameInTable="IdAdoptanteColumn" msprop:Generator_UserColumnName="IdAdoptante">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IdAnimal" msprop:Generator_ColumnVarNameInTable="columnIdAnimal" msprop:Generator_ColumnPropNameInRow="IdAnimal" msprop:Generator_ColumnPropNameInTable="IdAnimalColumn" msprop:Generator_UserColumnName="IdAnimal">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:v_SolicitudAdopcion" />
+      <xs:field xpath="mstns:IdSolicitud" />
+      <xs:field xpath="mstns:IdAdoptante" />
+      <xs:field xpath="mstns:IdAnimal" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

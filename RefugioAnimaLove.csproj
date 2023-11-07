@@ -1,0 +1,368 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{41DAC8D8-BE2D-447D-B7AD-453EA251EC0E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>RefugioAnimaLove</RootNamespace>
+    <AssemblyName>RefugioAnimaLove</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.4000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\frmAdminPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\frmAdminPersonal.Designer.cs">
+      <DependentUpon>frmAdminPersonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\frmAdminTipoPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\frmAdminTipoPersonal.Designer.cs">
+      <DependentUpon>frmAdminTipoPersonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\frmAdminUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\frmAdminUsuario.Designer.cs">
+      <DependentUpon>frmAdminUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\frmEditPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\frmEditPersonal.Designer.cs">
+      <DependentUpon>frmEditPersonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\frmEditTipoPersonal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\frmEditTipoPersonal.Designer.cs">
+      <DependentUpon>frmEditTipoPersonal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\frmEditUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\frmEditUsuario.Designer.cs">
+      <DependentUpon>frmEditUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Personalizadas\frmAdminAnimalTratamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Personalizadas\frmAdminAnimalTratamiento.Designer.cs">
+      <DependentUpon>frmAdminAnimalTratamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Personalizadas\frmAdminSolicitudAdopcion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Personalizadas\frmAdminSolicitudAdopcion.Designer.cs">
+      <DependentUpon>frmAdminSolicitudAdopcion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Refugio\frmAdminAdoptante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refugio\frmAdminAdoptante.Designer.cs">
+      <DependentUpon>frmAdminAdoptante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refugio\frmAdminAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refugio\frmAdminAnimal.Designer.cs">
+      <DependentUpon>frmAdminAnimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refugio\frmAdminEspecie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refugio\frmAdminEspecie.Designer.cs">
+      <DependentUpon>frmAdminEspecie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refugio\frmAdminEstadoAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refugio\frmAdminEstadoAnimal.Designer.cs">
+      <DependentUpon>frmAdminEstadoAnimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refugio\frmAdminEstadoSolicitud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refugio\frmAdminEstadoSolicitud.Designer.cs">
+      <DependentUpon>frmAdminEstadoSolicitud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refugio\frmAdminTratamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refugio\frmAdminTratamiento.Designer.cs">
+      <DependentUpon>frmAdminTratamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refugio\frmAdminTratamientoAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refugio\frmAdminTratamientoAnimal.Designer.cs">
+      <DependentUpon>frmAdminTratamientoAnimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refugio\frmEditAdoptante.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refugio\frmEditAdoptante.Designer.cs">
+      <DependentUpon>frmEditAdoptante.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refugio\frmEditAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refugio\frmEditAnimal.Designer.cs">
+      <DependentUpon>frmEditAnimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refugio\frmEditEspecie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refugio\frmEditEspecie.Designer.cs">
+      <DependentUpon>frmEditEspecie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refugio\frmEditEstadoAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refugio\frmEditEstadoAnimal.Designer.cs">
+      <DependentUpon>frmEditEstadoAnimal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refugio\frmEditEstadoSolicitud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refugio\frmEditEstadoSolicitud.Designer.cs">
+      <DependentUpon>frmEditEstadoSolicitud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refugio\frmEditSolicitud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refugio\frmEditSolicitud.Designer.cs">
+      <DependentUpon>frmEditSolicitud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Refugio\frmEditTratamiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Refugio\frmEditTratamiento.Designer.cs">
+      <DependentUpon>frmEditTratamiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\CRGenerarSolicitud.cs">
+      <DependentUpon>CRGenerarSolicitud.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Reportes\CRSolicitud.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CRSolicitud.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\DSSolicitud.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSSolicitud.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\frmCRSolicitud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmCRSolicitud.Designer.cs">
+      <DependentUpon>frmCRSolicitud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\frmSolicitud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\frmSolicitud.Designer.cs">
+      <DependentUpon>frmSolicitud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\frmInicio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seguridad\frmInicio.Designer.cs">
+      <DependentUpon>frmInicio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Seguridad\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Seguridad\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Admin\frmAdminPersonal.resx">
+      <DependentUpon>frmAdminPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\frmAdminTipoPersonal.resx">
+      <DependentUpon>frmAdminTipoPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\frmAdminUsuario.resx">
+      <DependentUpon>frmAdminUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\frmEditPersonal.resx">
+      <DependentUpon>frmEditPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\frmEditTipoPersonal.resx">
+      <DependentUpon>frmEditTipoPersonal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\frmEditUsuario.resx">
+      <DependentUpon>frmEditUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personalizadas\frmAdminAnimalTratamiento.resx">
+      <DependentUpon>frmAdminAnimalTratamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Personalizadas\frmAdminSolicitudAdopcion.resx">
+      <DependentUpon>frmAdminSolicitudAdopcion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Refugio\frmAdminAdoptante.resx">
+      <DependentUpon>frmAdminAdoptante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refugio\frmAdminAnimal.resx">
+      <DependentUpon>frmAdminAnimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refugio\frmAdminEspecie.resx">
+      <DependentUpon>frmAdminEspecie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refugio\frmAdminEstadoAnimal.resx">
+      <DependentUpon>frmAdminEstadoAnimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refugio\frmAdminEstadoSolicitud.resx">
+      <DependentUpon>frmAdminEstadoSolicitud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refugio\frmAdminTratamiento.resx">
+      <DependentUpon>frmAdminTratamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refugio\frmAdminTratamientoAnimal.resx">
+      <DependentUpon>frmAdminTratamientoAnimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refugio\frmEditAdoptante.resx">
+      <DependentUpon>frmEditAdoptante.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refugio\frmEditAnimal.resx">
+      <DependentUpon>frmEditAnimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refugio\frmEditEspecie.resx">
+      <DependentUpon>frmEditEspecie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refugio\frmEditEstadoAnimal.resx">
+      <DependentUpon>frmEditEstadoAnimal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refugio\frmEditEstadoSolicitud.resx">
+      <DependentUpon>frmEditEstadoSolicitud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refugio\frmEditSolicitud.resx">
+      <DependentUpon>frmEditSolicitud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Refugio\frmEditTratamiento.resx">
+      <DependentUpon>frmEditTratamiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\CRGenerarSolicitud.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRGenerarSolicitud.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\CRSolicitud.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CRSolicitud.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmCRSolicitud.resx">
+      <DependentUpon>frmCRSolicitud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\frmSolicitud.resx">
+      <DependentUpon>frmSolicitud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seguridad\frmInicio.resx">
+      <DependentUpon>frmInicio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Seguridad\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Reportes\DSSolicitud.xsc">
+      <DependentUpon>DSSolicitud.xsd</DependentUpon>
+    </None>
+    <None Include="Reportes\DSSolicitud.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSSolicitud.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Reportes\DSSolicitud.xss">
+      <DependentUpon>DSSolicitud.xsd</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="CapaDatos\CapaDatos.csproj">
+      <Project>{79FF9C60-D150-4E75-933C-951B234F3A87}</Project>
+      <Name>CapaDatos</Name>
+    </ProjectReference>
+    <ProjectReference Include="CapaEntidades\CapaEntidades.csproj">
+      <Project>{9BAC3F6E-BBAF-43F4-930C-110B2B2307D2}</Project>
+      <Name>CapaEntidades</Name>
+    </ProjectReference>
+    <ProjectReference Include="CapaLogica\CapaLogica.csproj">
+      <Project>{64F063FA-4281-4253-A311-72A7F531AED8}</Project>
+      <Name>CapaLogica</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
